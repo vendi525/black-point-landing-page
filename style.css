@@ -1,0 +1,271 @@
+:root {
+    --bg-color: #0a0a0c;
+    --text-color: #f3f4f6;
+    --accent-color: #3b82f6;
+    --text-muted: #9ca3af;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1.6;
+}
+
+/* Prevents scrolling the main page while modal is active */
+body.modal-open {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+/* Responsive Logo */
+.logo-image {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+}
+
+/* Typography */
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.pitch {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    padding: 0 1rem;
+}
+
+/* Sections */
+.section-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.instructions {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+/* Comparison Grid */
+.comparison-grid {
+    width: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.list-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+li::before {
+    content: "•";
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: 0.2rem;
+}
+
+/* --- CENTERED FLOATING CONSENT MODAL --- */
+.consent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px); /* Blurs the underlying landing page details */
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 1.5rem;
+}
+
+.consent-overlay.show {
+    display: flex;
+}
+
+.consent-modal {
+    background-color: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    animation: fadeInModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.consent-modal h2 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.consent-modal p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+}
+
+.consent-modal a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.consent-modal a:hover {
+    text-decoration: underline;
+}
+
+.consent-buttons {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    flex: 1;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+/* --- MOBILE ADAPTATION --- */
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1rem 0;
+    }
+
+    h1 {
+        font-size: 1.85rem;
+    }
+
+    .pitch {
+        font-size: 1.05rem;
+        margin-bottom: 2rem;
+    }
+
+    .instructions {
+        margin-bottom: 2rem;
+    }
+
+    .logo-image {
+        max-width: 90px;
+    }
+
+    .consent-modal {
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .consent-buttons {
+        flex-direction: column-reverse; /* Puts accept option natively right under thumbs */
+    }
+    
+    button {
+        width: 100%;
+    }
+}
