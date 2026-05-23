@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusPoint - Train Your Attention Span</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Consent Mode v2 Default Settings (Must run BEFORE GTM/GA4) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Set default consent to 'denied' for strict compliance
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
+        });
+    </script>
+
+    <!-- Paste your GA4 Google Tag Script or Google Tag Manager Script right here -->
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Responsive Logo Image -->
+        <img src="watermarked_img_16174253918229229092.png" alt="FocusPoint Logo" class="logo-image">
+
+        <!-- Brand Name -->
+        <h1>FocusPoint</h1>
+
+        <!-- Two Line Sales Pitch -->
+        <p class="pitch">
+            Train your brain using the exact neurobiological protocols recommended by Andrew Huberman.<br>
+            Build deep concentration by anchoring your vision, avoiding digital screens, and gamifying your focus.
+        </p>
+
+        <!-- How to Use -->
+        <div class="section-title">How It Works</div>
+        <p class="instructions">
+            Draw a small dot on a physical piece of paper. Open the app, start your daily challenge, and stare at the paper dot. FocusPoint utilizes your front-facing camera to track your eyes in real-time, keeping your streak alive only as long as your focus holds.
+        </p>
+
+        <!-- Before and After Bullet Points -->
+        <div class="comparison-grid">
+            <div class="list-section">
+                <div class="list-title">Before FocusPoint</div>
+                <ul>
+                    <li>Scattered attention span dictated by endless notifications</li>
+                    <li>Digital eye strain from staring constantly at bright glass screens</li>
+                    <li>Losing track of deep work sessions within minutes of starting</li>
+                </ul>
+            </div>
+            
+            <div class="list-section">
+                <div class="list-title">After FocusPoint</div>
+                <ul>
+                    <li>Rewired neural circuits for sustained, effortless concentration</li>
+                    <li>Healthier visual habits by looking at tangible physical targets</li>
+                    <li>A compounding daily streak that proves your mental clarity is growing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Centered Blocking Consent Modal Backdrop -->
+    <div id="consent-overlay" class="consent-overlay">
+        <!-- Floating Banner Box -->
+        <div class="consent-modal">
+            <div class="consent-modal-logo"></div>
+            <h2>Cookie Consent</h2>
+            <p>We use cookies to analyze traffic, remember your preferences, and optimize your FocusPoint experience. Choose your privacy settings below to continue. Read our <a href="#">Privacy Policy</a>.</p>
+            <div class="consent-buttons">
+                <button id="btn-deny" class="btn-secondary">Deny</button>
+                <button id="btn-accept" class="btn-primary">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consent Banner Functionality Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const overlay = document.getElementById("consent-overlay");
+            const acceptBtn = document.getElementById("btn-accept");
+            const denyBtn = document.getElementById("btn-deny");
+
+            // Check if user has already made a choice
+            if (!localStorage.getItem("consentModeChoice")) {
+                overlay.classList.add("show");
+                document.body.classList.add("modal-open"); // Blocks background interaction
+            }
+
+            acceptBtn.addEventListener("click", function () {
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'analytics_storage': 'granted'
+                });
+                localStorage.setItem("consentModeChoice", "granted");
+                closeConsent();
+            });
+
+            denyBtn.addEventListener("click", function () {
+                localStorage.setItem("consentModeChoice", "denied");
+                closeConsent();
+            });
+
+            function closeConsent() {
+                overlay.classList.remove("show");
+                document.body.classList.remove("modal-open");
+            }
+        });
+    </script>
+</body>
+</html>
