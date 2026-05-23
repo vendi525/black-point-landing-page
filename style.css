@@ -1,4 +1,4 @@
-:root {
+f:root {
     --bg-color: #ebe5df;
     --text-color: #000000;
     --accent-color: #c75804;
@@ -98,7 +98,7 @@ h1 {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #ffffff;
+    color: #000000;
 }
 
 ul {
