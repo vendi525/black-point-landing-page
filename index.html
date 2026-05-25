@@ -6,22 +6,22 @@
     <title>FocusPoint - Train Your Attention Span</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Consent Mode v2 Default Settings (Must run BEFORE GTM/GA4) -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        
-        // Set default consent to 'denied' for strict compliance
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
         gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'analytics_storage': 'denied',
-            'wait_for_update': 500
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
         });
-    </script>
 
-    <!-- Paste your GA4 Google Tag Script or Google Tag Manager Script right here -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLCFL7ETZ9"></script>
+    <script>
+        gtag('js', new Date());
+        gtag('config', 'G-LLCFL7ETZ9');
+    </script>
 
 </head>
 <body>
@@ -67,54 +67,5 @@
         </div>
     </div>
 
-    <!-- Centered Blocking Consent Modal Backdrop -->
-    <div id="consent-overlay" class="consent-overlay">
-        <!-- Floating Banner Box -->
-        <div class="consent-modal">
-            <div class="consent-modal-logo"></div>
-            <h2>Cookie Consent</h2>
-            <p>We use cookies to analyze traffic, remember your preferences, and optimize your FocusPoint experience. Choose your privacy settings below to continue. Read our <a href="#">Privacy Policy</a>.</p>
-            <div class="consent-buttons">
-                <button id="btn-deny" class="btn-secondary">Deny</button>
-                <button id="btn-accept" class="btn-primary">Accept All</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Consent Banner Functionality Logic -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const overlay = document.getElementById("consent-overlay");
-            const acceptBtn = document.getElementById("btn-accept");
-            const denyBtn = document.getElementById("btn-deny");
-
-            // Check if user has already made a choice
-            if (!localStorage.getItem("consentModeChoice")) {
-                overlay.classList.add("show");
-                document.body.classList.add("modal-open"); // Blocks background interaction
-            }
-
-            acceptBtn.addEventListener("click", function () {
-                gtag('consent', 'update', {
-                    'ad_storage': 'granted',
-                    'ad_user_data': 'granted',
-                    'ad_personalization': 'granted',
-                    'analytics_storage': 'granted'
-                });
-                localStorage.setItem("consentModeChoice", "granted");
-                closeConsent();
-            });
-
-            denyBtn.addEventListener("click", function () {
-                localStorage.setItem("consentModeChoice", "denied");
-                closeConsent();
-            });
-
-            function closeConsent() {
-                overlay.classList.remove("show");
-                document.body.classList.remove("modal-open");
-            }
-        });
-    </script>
 </body>
 </html>
